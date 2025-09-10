@@ -1,5 +1,6 @@
 package com.krazytop.leagueoflegends;
 
+import lombok.AllArgsConstructor;
 import org.springframework.batch.core.Job;
 import org.springframework.batch.core.JobParameters;
 import org.springframework.batch.core.JobParametersBuilder;
@@ -16,6 +17,7 @@ import org.springframework.data.mongodb.repository.config.EnableMongoRepositorie
 
 import java.util.Date;
 
+@AllArgsConstructor
 @ConfigurationPropertiesScan
 @EnableBatchProcessing
 @EnableMongoRepositories(basePackages = {"com.krazytop.leagueoflegends.repository"})
@@ -24,11 +26,6 @@ public class PatchUpdatesApplication {
 
     private final JobLauncher jobLauncher;
     private final Job job;
-
-    public PatchUpdatesApplication(JobLauncher jobLauncher, Job job) {
-        this.jobLauncher = jobLauncher;
-        this.job = job;
-    }
 
     public static void main(String[] args) {
         SpringApplication.run(PatchUpdatesApplication.class, args);
