@@ -1,5 +1,6 @@
 package com.krazytop.leagueoflegends.batch;
 
+import com.krazytop.leagueoflegends.batch.model.PatchMetadata;
 import com.krazytop.leagueoflegends.entity.Metadata;
 import com.krazytop.leagueoflegends.entity.Patch;
 import com.krazytop.leagueoflegends.repository.MetadataRepository;

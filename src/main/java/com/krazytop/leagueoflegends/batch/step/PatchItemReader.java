@@ -1,5 +1,6 @@
-package com.krazytop.leagueoflegends.batch;
+package com.krazytop.leagueoflegends.batch.step;
 
+import com.krazytop.leagueoflegends.batch.model.PatchMetadata;
 import org.springframework.batch.core.StepExecution;
 import org.springframework.batch.core.annotation.BeforeStep;
 import org.springframework.batch.item.ExecutionContext;

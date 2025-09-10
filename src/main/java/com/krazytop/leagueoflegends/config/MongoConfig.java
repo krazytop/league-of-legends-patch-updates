@@ -22,6 +22,12 @@ import java.util.Map;
 
 @Configuration
 public class MongoConfig {
+    
+    private static final String BATCH_JOB_INSTANCE = "BATCH_JOB_INSTANCE";
+    private static final String BATCH_JOB_EXECUTION = "BATCH_JOB_EXECUTION";
+    private static final String BATCH_STEP_EXECUTION = "BATCH_STEP_EXECUTION";
+    private static final String JOB_INSTANCE_ID = "jobInstanceId";
+    private static final String COUNT = "count";
 
     @Bean
     public MongoTemplate mongoTemplate(
@@ -71,36 +77,36 @@ public class MongoConfig {
 
     @Bean
     public String initializeBatchSchema(MongoTemplate mongoTemplate) {
-        if (!mongoTemplate.collectionExists("BATCH_JOB_INSTANCE")) {
-            mongoTemplate.createCollection("BATCH_JOB_INSTANCE");
-            mongoTemplate.createCollection("BATCH_JOB_EXECUTION");
-            mongoTemplate.createCollection("BATCH_STEP_EXECUTION");
+        if (!mongoTemplate.collectionExists(BATCH_JOB_INSTANCE)) {
+            mongoTemplate.createCollection(BATCH_JOB_INSTANCE);
+            mongoTemplate.createCollection(BATCH_JOB_EXECUTION);
+            mongoTemplate.createCollection(BATCH_STEP_EXECUTION);
             mongoTemplate.createCollection("BATCH_SEQUENCES");
             MongoCollection<Document> batchSequences = mongoTemplate.getCollection("BATCH_SEQUENCES");
             if (batchSequences.countDocuments(new Document("_id", "BATCH_JOB_INSTANCE_SEQ")) == 0) {
-                batchSequences.insertOne(new Document(Map.of("_id", "BATCH_JOB_INSTANCE_SEQ", "count", 0L)));
+                batchSequences.insertOne(new Document(Map.of("_id", "BATCH_JOB_INSTANCE_SEQ", COUNT, 0L)));
             }
             if (batchSequences.countDocuments(new Document("_id", "BATCH_JOB_EXECUTION_SEQ")) == 0) {
-                batchSequences.insertOne(new Document(Map.of("_id", "BATCH_JOB_EXECUTION_SEQ", "count", 0L)));
+                batchSequences.insertOne(new Document(Map.of("_id", "BATCH_JOB_EXECUTION_SEQ", COUNT, 0L)));
             }
             if (batchSequences.countDocuments(new Document("_id", "BATCH_STEP_EXECUTION_SEQ")) == 0) {
-                batchSequences.insertOne(new Document(Map.of("_id", "BATCH_STEP_EXECUTION_SEQ", "count", 0L)));
+                batchSequences.insertOne(new Document(Map.of("_id", "BATCH_STEP_EXECUTION_SEQ", COUNT, 0L)));
             }
-            mongoTemplate.indexOps("BATCH_JOB_INSTANCE")
+            mongoTemplate.indexOps(BATCH_JOB_INSTANCE)
                     .createIndex(new Index().on("jobName", Sort.Direction.ASC).named("job_name_idx"));
-            mongoTemplate.indexOps("BATCH_JOB_INSTANCE")
+            mongoTemplate.indexOps(BATCH_JOB_INSTANCE)
                     .createIndex(new Index().on("jobName", Sort.Direction.ASC)
                             .on("jobKey", Sort.Direction.ASC)
                             .named("job_name_key_idx"));
-            mongoTemplate.indexOps("BATCH_JOB_INSTANCE")
-                    .createIndex(new Index().on("jobInstanceId", Sort.Direction.DESC).named("job_instance_idx"));
-            mongoTemplate.indexOps("BATCH_JOB_EXECUTION")
-                    .createIndex(new Index().on("jobInstanceId", Sort.Direction.ASC).named("job_instance_idx"));
-            mongoTemplate.indexOps("BATCH_JOB_EXECUTION")
-                    .createIndex(new Index().on("jobInstanceId", Sort.Direction.ASC)
+            mongoTemplate.indexOps(BATCH_JOB_INSTANCE)
+                    .createIndex(new Index().on(JOB_INSTANCE_ID, Sort.Direction.DESC).named("job_instance_idx"));
+            mongoTemplate.indexOps(BATCH_JOB_EXECUTION)
+                    .createIndex(new Index().on(JOB_INSTANCE_ID, Sort.Direction.ASC).named("job_instance_idx"));
+            mongoTemplate.indexOps(BATCH_JOB_EXECUTION)
+                    .createIndex(new Index().on(JOB_INSTANCE_ID, Sort.Direction.ASC)
                             .on("status", Sort.Direction.ASC)
                             .named("job_instance_status_idx"));
-            mongoTemplate.indexOps("BATCH_STEP_EXECUTION")
+            mongoTemplate.indexOps(BATCH_STEP_EXECUTION)
                     .createIndex(new Index().on("stepExecutionId", Sort.Direction.ASC).named("step_execution_idx"));
         }
         return "BatchSchemaInitialized";

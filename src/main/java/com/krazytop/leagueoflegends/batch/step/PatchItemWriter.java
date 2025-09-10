@@ -1,18 +1,14 @@
-package com.krazytop.leagueoflegends.batch;
+package com.krazytop.leagueoflegends.batch.step;
 
 import com.krazytop.leagueoflegends.entity.Metadata;
 import com.krazytop.leagueoflegends.entity.Patch;
 import com.krazytop.leagueoflegends.repository.MetadataRepository;
 import com.krazytop.leagueoflegends.repository.PatchRepository;
-import com.krazytop.leagueoflegends.service.PatchService;
 import lombok.AllArgsConstructor;
 import org.springframework.batch.item.Chunk;
 import org.springframework.batch.item.ItemWriter;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.stream.Collectors;
 
 @AllArgsConstructor

@@ -3,7 +3,7 @@ package com.krazytop.leagueoflegends.service;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.krazytop.leagueoflegends.batch.PatchMetadata;
+import com.krazytop.leagueoflegends.batch.model.PatchMetadata;
 import com.krazytop.leagueoflegends.entity.*;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -51,7 +51,7 @@ public class PatchService {
 
     private void addPatchChampions(Patch patch) throws IOException, URISyntaxException {
         String url = String.format("https://ddragon.leagueoflegends.com/cdn/%s/data/%s/champion.json", patch.getFullPatchId(), patch.getLanguage());
-        Map<String, ChampionNomenclature> nomenclaturesMap = MAPPER.convertValue(MAPPER.readTree(new URI(url).toURL()).get("data"), new TypeReference<>() {});//TODO refracto les mapper
+        Map<String, ChampionNomenclature> nomenclaturesMap = MAPPER.convertValue(MAPPER.readTree(new URI(url).toURL()).get("data"), new TypeReference<>() {});
         patch.setChampions(nomenclaturesMap.values().stream().toList());
     }
 
@@ -71,8 +71,7 @@ public class PatchService {
     private void addPatchAugments(Patch patch) throws IOException, URISyntaxException {
         if (isVersionAfterAnOther(patch.getPatchId(), "13.13")) {
             String url = String.format("https://raw.communitydragon.org/%s/cdragon/arena/%s.json", patch.getPatchId(), patch.getLanguage().toLowerCase());
-            patch.setAugments(MAPPER.convertValue(MAPPER.readTree(new URI(url).toURL()).get("augments"), new TypeReference<>() {
-            }));
+            patch.setAugments(MAPPER.convertValue(MAPPER.readTree(new URI(url).toURL()).get("augments"), new TypeReference<>() {}));
         }
     }
 

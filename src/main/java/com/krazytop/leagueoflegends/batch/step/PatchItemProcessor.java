@@ -1,5 +1,6 @@
-package com.krazytop.leagueoflegends.batch;
+package com.krazytop.leagueoflegends.batch.step;
 
+import com.krazytop.leagueoflegends.batch.model.PatchMetadata;
 import com.krazytop.leagueoflegends.entity.Patch;
 import com.krazytop.leagueoflegends.service.PatchService;
 import lombok.AllArgsConstructor;

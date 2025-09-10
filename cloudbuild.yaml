@@ -1,0 +1,72 @@
+steps:
+  # 1. Exécution des tests Maven
+  - name: 'maven:3.9.10-eclipse-temurin-21-alpine'
+    entrypoint: 'mvn'
+    args: ['test']
+    dir: '.'
+    id: 'run-maven-tests'
+
+  # 2. Analyse SonarQube
+  - name: 'maven:3.9.10-eclipse-temurin-21-alpine'
+    entrypoint: 'mvn'
+    dir: '.'
+    args:
+      - 'sonar:sonar'
+      - '-Dsonar.projectKey=${_SONAR_PROJECT_KEY}'
+      - '-Dsonar.organization=${_SONAR_ORGANIZATION}'
+      - '-Dsonar.host.url=${_SONAR_HOST_URL}'
+    secretEnv:
+      - 'SONAR_TOKEN'
+    waitFor: ['run-maven-tests']
+    id: 'run-sonarqube-analysis'
+
+  # 3. Construction de l’image Docker
+  - name: 'gcr.io/cloud-builders/docker'
+    args:
+      - 'build'
+      - '-t'
+      - '${_GAR_LOCATION}-docker.pkg.dev/${PROJECT_ID}/${_REPOSITORY}/${_IMAGE_NAME}:${COMMIT_SHA}'
+      - '.'
+    dir: '.'
+    env: [ 'DOCKER_BUILDKIT=1' ]
+    waitFor: ['run-sonarqube-analysis']
+    id: 'build-docker-image'
+
+  # 4. Push de l'image Docker vers Artifact Registry
+  - name: 'gcr.io/cloud-builders/docker'
+    env: [ 'DOCKER_BUILDKIT=1' ]
+    args:
+      - 'push'
+      - '${_GAR_LOCATION}-docker.pkg.dev/${PROJECT_ID}/${_REPOSITORY}/${_IMAGE_NAME}:${COMMIT_SHA}'
+    waitFor: ['build-docker-image']
+    id: 'push-to-artifact-registry'
+
+  # 5. Déploiement sur Cloud Run
+  - name: 'gcr.io/cloud-builders/gcloud'
+    args:
+      - 'run'
+      - 'deploy'
+      - '${_SERVICE_NAME}'
+      - '--image=${_GAR_LOCATION}-docker.pkg.dev/${PROJECT_ID}/${_REPOSITORY}/${_IMAGE_NAME}:${COMMIT_SHA}'
+      - '--platform=managed'
+      - '--region=${_CLOUD_RUN_REGION}'
+      - '--allow-unauthenticated'
+      - '--port=8080'
+      - '--set-secrets=API_KEY=lol-api-key:latest,MONGO_DATABASE_URL=mongo-database-url:latest'
+    waitFor: ['push-to-artifact-registry']
+    id: 'deploy-to-cloud-run'
+
+availableSecrets:
+  secretManager:
+    - env: SONAR_TOKEN
+      versionName: projects/${PROJECT_ID}/secrets/sonar-token/versions/latest
+
+substitutions:
+  _GAR_LOCATION: europe-west9
+  _REPOSITORY: docker
+  _IMAGE_NAME: league-of-legends-patch-updates
+  _SERVICE_NAME: league-of-legends-patch-updates-service
+  _CLOUD_RUN_REGION: europe-west9
+  _SONAR_HOST_URL: https://sonarcloud.io/
+  _SONAR_ORGANIZATION: krazytop
+  _SONAR_PROJECT_KEY: krazytop_league-of-legends-patch-updates

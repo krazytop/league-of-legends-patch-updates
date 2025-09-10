@@ -1,4 +1,4 @@
-package com.krazytop.leagueoflegends.batch;
+package com.krazytop.leagueoflegends.batch.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

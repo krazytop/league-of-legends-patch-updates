@@ -4,8 +4,6 @@ import com.krazytop.leagueoflegends.entity.Patch;
 import org.springframework.data.mongodb.repository.Aggregation;
 import org.springframework.data.mongodb.repository.MongoRepository;
 
-import java.util.Optional;
-
 public interface PatchRepository extends MongoRepository<Patch, String> {
 
     @Aggregation(pipeline = {

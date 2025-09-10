@@ -1,10 +1,14 @@
 package com.krazytop.leagueoflegends.batch;
 
+import com.krazytop.leagueoflegends.batch.model.PatchMetadata;
+import com.krazytop.leagueoflegends.batch.step.FilterPatchesVersionTasklet;
+import com.krazytop.leagueoflegends.batch.step.PatchItemProcessor;
+import com.krazytop.leagueoflegends.batch.step.PatchItemReader;
+import com.krazytop.leagueoflegends.batch.step.PatchItemWriter;
 import com.krazytop.leagueoflegends.entity.Patch;
 import lombok.AllArgsConstructor;
 import org.springframework.batch.core.Job;
 import org.springframework.batch.core.Step;
-import org.springframework.batch.core.StepExecutionListener;
 import org.springframework.batch.core.job.builder.JobBuilder;
 import org.springframework.batch.core.repository.JobRepository;
 import org.springframework.batch.core.step.builder.StepBuilder;

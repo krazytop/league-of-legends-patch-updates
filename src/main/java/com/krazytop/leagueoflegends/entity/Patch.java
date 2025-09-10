@@ -1,6 +1,6 @@
 package com.krazytop.leagueoflegends.entity;
 
-import com.krazytop.leagueoflegends.batch.PatchMetadata;
+import com.krazytop.leagueoflegends.batch.model.PatchMetadata;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Transient;

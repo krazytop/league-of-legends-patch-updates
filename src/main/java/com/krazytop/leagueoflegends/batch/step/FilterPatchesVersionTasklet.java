@@ -1,5 +1,6 @@
-package com.krazytop.leagueoflegends.batch;
+package com.krazytop.leagueoflegends.batch.step;
 
+import com.krazytop.leagueoflegends.batch.model.PatchMetadata;
 import com.krazytop.leagueoflegends.repository.MetadataRepository;
 import com.krazytop.leagueoflegends.service.PatchService;
 import lombok.AllArgsConstructor;
@@ -13,6 +14,7 @@ import java.util.List;
 import java.util.Set;
 
 import static com.krazytop.leagueoflegends.service.PatchService.SUPPORTED_LANGUAGES;
+import static com.krazytop.leagueoflegends.service.PatchService.getWithoutFixVersion;
 
 @AllArgsConstructor
 @Component
@@ -27,7 +29,7 @@ public class FilterPatchesVersionTasklet implements Tasklet {
         Set<String> savedPatchesVersion = metadataRepository.findAll().getFirst().getAllPatches();
 
         List<PatchMetadata> newPatchesMetadata = allPatchesVersion.stream()
-                .filter(version -> !savedPatchesVersion.contains(patchService.getWithoutFixVersion(version)))
+                .filter(version -> !savedPatchesVersion.contains(getWithoutFixVersion(version)))
                 .flatMap(version -> SUPPORTED_LANGUAGES.stream()
                         .map(language -> new PatchMetadata(version, language)))
                 .toList();
