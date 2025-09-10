@@ -63,7 +63,7 @@ substitutions:
   _GAR_LOCATION: europe-west9
   _REPOSITORY: docker
   _IMAGE_NAME: league-of-legends-patch-updates
-  _SERVICE_NAME: league-of-legends-patch-updates-service
+  _JOB_NAME: league-of-legends-patch-updates-job
   _CLOUD_RUN_REGION: europe-west9
   _SONAR_HOST_URL: https://sonarcloud.io/
   _SONAR_ORGANIZATION: krazytop
