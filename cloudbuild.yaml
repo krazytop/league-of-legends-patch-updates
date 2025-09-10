@@ -51,6 +51,7 @@ steps:
       - '--image=${_GAR_LOCATION}-docker.pkg.dev/${PROJECT_ID}/${_REPOSITORY}/${_IMAGE_NAME}:${COMMIT_SHA}'
       - '--region=${_CLOUD_RUN_REGION}'
       - '--port=8080'
+      - '--schedule="0 10 * * *"'
       - '--set-secrets=API_KEY=lol-api-key:latest,MONGO_DATABASE_URL=mongo-database-url:latest'
     waitFor: ['push-to-artifact-registry']
     id: 'deploy-to-cloud-run-job'
