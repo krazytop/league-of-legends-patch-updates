@@ -1,0 +1,39 @@
+{
+  "type": "champion",
+  "format": "standAloneComplex",
+  "version": "14.19.1",
+  "data": {
+    "Aatrox": {
+      "version": "14.19.1",
+      "id": "Aatrox",
+      "key": "266",
+      "name": "Aatrox",
+      "title": "Épée des Darkin",
+      "blurb": "Autrefois, Aatrox et ses frères étaient honorés pour avoir défendu Shurima contre le Néant. Mais ils finirent par devenir une menace plus grande encore pour Runeterra : la ruse et la sorcellerie furent employées pour les battre. Cependant, après des...",
+      "info": {
+        "attack": 8,
+        "defense": 4,
+        "magic": 3,
+        "difficulty": 4
+      },
+      "image": {
+        "full": "Aatrox.png",
+        "sprite": "champion0.png",
+        "group": "champion",
+        "x": 0,
+        "y": 0,
+        "w": 48,
+        "h": 48
+      },
+      "tags": [
+        "Fighter"
+      ],
+      "partype": "Puits de sang",
+      "stats": {
+        "hp": 650,
+        "hpperlevel": 114,
+        "attackspeed": 0.651
+      }
+    }
+  }
+}

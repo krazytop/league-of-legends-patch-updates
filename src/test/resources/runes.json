@@ -1,0 +1,22 @@
+[
+  {
+    "id": 8200,
+    "key": "Sorcery",
+    "icon": "perk-images/Styles/7202_Sorcery.png",
+    "name": "Sorcellerie",
+    "slots": [
+      {
+        "runes": [
+          {
+            "id": 8214,
+            "key": "SummonAery",
+            "icon": "perk-images/Styles/Sorcery/SummonAery/SummonAery.png",
+            "name": "Invocation d'Aery",
+            "shortDesc": "Vos attaques et vos compétences envoient Aery vers une cible, blessant les ennemis ou protégeant les alliés.",
+            "longDesc": "Blesser un champion ennemi avec une attaque de base ou une compétence envoie Aery vers lui, lui infligeant 10 - 50 selon le niveau (+<scaleAP>0.05 puissance</scaleAP>)."
+          }
+        ]
+      }
+    ]
+  }
+]

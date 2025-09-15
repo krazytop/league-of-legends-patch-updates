@@ -1,7 +1,6 @@
 package com.krazytop.leagueoflegends.service;
 
 import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.krazytop.leagueoflegends.batch.model.PatchMetadata;
 import com.krazytop.leagueoflegends.entity.*;
@@ -22,10 +21,8 @@ public class PatchService {
     private static final ObjectMapper MAPPER = new ObjectMapper();
 
     public Set<String> getAllVersions() throws IOException, URISyntaxException {
-        ObjectMapper mapper = new ObjectMapper();
         String uri = "https://ddragon.leagueoflegends.com/api/versions.json";
-        JsonNode data = mapper.readTree(new URI(uri).toURL());
-        Set<String> allPatchesVersion = mapper.convertValue(data, new TypeReference<>() {});
+        Set<String> allPatchesVersion = MAPPER.convertValue(MAPPER.readTree(new URI(uri).toURL()), new TypeReference<>() {});
         return allPatchesVersion.stream()
                 .filter(version -> !version.contains("lol"))
                 .filter(version -> !version.startsWith("0."))
@@ -42,11 +39,6 @@ public class PatchService {
         addPatchAugments(patch);
         addPatchQueues(patch);
         return patch;
-    }
-
-    public String getCurrentPatchVersion() throws IOException, URISyntaxException {
-        String uri = "https://ddragon.leagueoflegends.com/realms/euw.json";
-        return MAPPER.readTree(new URI(uri).toURL()).get("v").asText().replaceAll("^(\\d+\\.\\d+).*", "$1");
     }
 
     private void addPatchChampions(Patch patch) throws IOException, URISyntaxException {
@@ -68,13 +60,6 @@ public class PatchService {
         patch.setItems(nomenclaturesMap.values().stream().toList());
     }
 
-    private void addPatchAugments(Patch patch) throws IOException, URISyntaxException {
-        if (isVersionAfterAnOther(patch.getPatchId(), "13.13")) {
-            String url = String.format("https://raw.communitydragon.org/%s/cdragon/arena/%s.json", patch.getPatchId(), patch.getLanguage().toLowerCase());
-            patch.setAugments(MAPPER.convertValue(MAPPER.readTree(new URI(url).toURL()).get("augments"), new TypeReference<>() {}));
-        }
-    }
-
     private void addPatchRunes(Patch patch) throws IOException, URISyntaxException {
         if (isVersionAfterAnOther(patch.getPatchId(), "8.0"))  {
             String url = String.format("https://ddragon.leagueoflegends.com/cdn/%s/data/%s/runesReforged.json", patch.getFullPatchId(), patch.getLanguage());
@@ -82,10 +67,15 @@ public class PatchService {
         }
     }
 
+    private void addPatchAugments(Patch patch) throws IOException, URISyntaxException {
+        if (isVersionAfterAnOther(patch.getPatchId(), "13.13")) {
+            String url = String.format("https://raw.communitydragon.org/%s/cdragon/arena/%s.json", patch.getPatchId(), patch.getLanguage().toLowerCase());
+            patch.setAugments(MAPPER.convertValue(MAPPER.readTree(new URI(url).toURL()).get("augments"), new TypeReference<>() {}));
+        }
+    }
+
     public void addPatchQueues(Patch patch) throws IOException, URISyntaxException {
         String version = isVersionAfterAnOther(patch.getPatchId(), "13.13") ? patch.getPatchId() : "13.14";
-        if (Objects.equals(version, "13.2") || Objects.equals(version, "13.3")) version = "13.4";
-        if (Objects.equals(version, "11.7")) version = "11.8";
         String queueUri = String.format("https://raw.communitydragon.org/%s/plugins/rcp-be-lol-game-data/global/%s/v1/queues.json", version, patch.getLanguage().toLowerCase());
         if (isVersionAfterAnOther(version, "14.12")) {
             patch.setQueues(MAPPER.convertValue(MAPPER.convertValue(MAPPER.readTree(new URI(queueUri).toURL()), new TypeReference<>() {}), new TypeReference<>() {}));
@@ -96,6 +86,11 @@ public class PatchService {
         }
     }
 
+    public String getCurrentPatchVersion() throws IOException, URISyntaxException {
+        String uri = "https://ddragon.leagueoflegends.com/realms/euw.json";
+        return MAPPER.readTree(new URI(uri).toURL()).get("v").asText().replaceAll("^(\\d+\\.\\d+).*", "$1");
+    }
+
     public static String getWithoutFixVersion(String version) {
         return version.substring(0, version.lastIndexOf('.'));
     }
@@ -104,9 +99,9 @@ public class PatchService {
         return Integer.valueOf(version.substring(0, version.indexOf('.')));
     }
 
-    public boolean isVersionAfterAnOther(String version, String referentVersion) {
-        String[] v1 = version.split("\\.");
-        String[] v2 = referentVersion.split("\\.");
+    public boolean isVersionAfterAnOther(String versionToCheck, String compareToVersion) {
+        String[] v1 = versionToCheck.split("\\.");
+        String[] v2 = compareToVersion.split("\\.");
 
         int majorDiff = Integer.parseInt(v1[0]) - Integer.parseInt(v2[0]);
         return majorDiff != 0 ? majorDiff > 0 : Integer.parseInt(v1[1]) > Integer.parseInt(v2[1]);

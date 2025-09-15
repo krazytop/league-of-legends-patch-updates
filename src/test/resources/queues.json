@@ -1,0 +1,16 @@
+[
+  {
+    "id": 420,
+    "name": "Classé en solo/duo",
+    "shortName": "Classé en solo/duo",
+    "description": "Classé en solo/duo desc",
+    "detailedDescription": "",
+    "gameSelectModeGroup": "kSummonersRift",
+    "gameSelectCategory": "kPvP",
+    "gameSelectPriority": 20,
+    "isSkillTreeQueue": false,
+    "isLimitedTimeQueue": false,
+    "hidePlayerPosition": false,
+    "viableChampionRoster": null
+  }
+]

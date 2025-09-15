@@ -5,17 +5,21 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.JsonNode;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-import org.springframework.data.mongodb.core.mapping.Document;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
+import lombok.experimental.SuperBuilder;
 
 import java.util.Map;
 
+@Data
+@SuperBuilder
+@NoArgsConstructor
+@ToString(callSuper = true)
 @EqualsAndHashCode(callSuper = true)
 @JsonIgnoreProperties(ignoreUnknown = true)
-@Data
-@Document(collection = "AugmentNomenclature")
 public class AugmentNomenclature extends Nomenclature {
 
-    private Map<String, Integer> dataValues;
+    private Map<String, Float> dataValues;
 
     @JsonProperty("iconLarge")
     private void unpackIconLarge(JsonNode node) {

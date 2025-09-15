@@ -1,0 +1,21 @@
+{
+  "augments": [
+    {
+      "apiName": "SelfDestruct",
+      "calculations": {},
+      "dataValues": {
+        "BombDelay": 15,
+        "KnockupDuration": 0.75,
+        "MaxHealthDamage": 0.20000000298023224,
+        "Radius": 350
+      },
+      "desc": "Vous commencez chaque manche avec une bombe attachée à vous. Au bout de @BombDelay@ sec, elle explose en infligeant des <trueDamage>dégâts bruts équivalents à @MaxHealthDamage*100@% des PV max</trueDamage> et <status>projette dans les airs</status> pendant @KnockupDuration@ sec.<br>",
+      "iconLarge": "assets/ux/cherry/augments/icons/selfdestruct_large.png",
+      "iconSmall": "assets/ux/cherry/augments/icons/selfdestruct_small.png",
+      "id": 108,
+      "name": "Autodestruction",
+      "rarity": 0,
+      "tooltip": "{{ Cherry_SelfDestruct_Summary }}<br><br>Dégâts infligés lors de cette manche : @f1@<br>Total des dégâts infligés : @f2@"
+    }
+  ]
+}

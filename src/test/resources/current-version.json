@@ -1,0 +1,21 @@
+{
+  "n": {
+    "item": "14.19.1",
+    "rune": "14.19.1",
+    "mastery": "14.19.1",
+    "summoner": "14.19.1",
+    "champion": "14.19.1",
+    "profileicon": "14.19.1",
+    "map": "14.19.1",
+    "language": "14.19.1",
+    "sticker": "14.19.1"
+  },
+  "v": "14.19.1",
+  "l": "en_GB",
+  "cdn": "https://ddragon.leagueoflegends.com/cdn",
+  "dd": "14.19.1",
+  "lg": "14.19.1",
+  "css": "14.19.1",
+  "profileiconmax": 28,
+  "store": null
+}

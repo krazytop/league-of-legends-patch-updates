@@ -5,9 +5,15 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.JsonNode;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
+import lombok.experimental.SuperBuilder;
 
 @EqualsAndHashCode(callSuper = true)
+@ToString(callSuper = true)
 @Data
+@SuperBuilder
+@NoArgsConstructor
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class SummonerSpellNomenclature extends Nomenclature {
 

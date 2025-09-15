@@ -6,12 +6,18 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.JsonNode;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
+import lombok.experimental.SuperBuilder;
 
 import java.util.List;
 import java.util.Map;
 
-@EqualsAndHashCode(callSuper = true)
 @Data
+@SuperBuilder
+@NoArgsConstructor
+@ToString(callSuper = true)
+@EqualsAndHashCode(callSuper = true)
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class ItemNomenclature extends Nomenclature {
 
@@ -20,7 +26,7 @@ public class ItemNomenclature extends Nomenclature {
     private int baseGold;
     private int totalGold;
     private List<String> tags;
-    private Map<String, Double> stats;
+    private Map<String, Float> stats;
     @JsonAlias("into")
     private List<String> toItems;
     @JsonAlias("from")

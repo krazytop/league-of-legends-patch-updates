@@ -1,0 +1,1048 @@
+{
+  "type": "item",
+  "version": "14.19.1",
+  "basic": {},
+  "data": {
+    "1001": {
+      "name": "Bottes",
+      "description": "<mainText><stats><attention>+25</attention> vitesse de déplacement</stats><br><br></mainText>",
+      "colloq": ";Boots of Speed;bottes de vitesse",
+      "plaintext": "Augmente légèrement la vitesse de déplacement.",
+      "from": [
+        "3005"
+      ],
+      "into": [
+        "3158"
+      ],
+      "image": {
+        "full": "1001.png",
+        "sprite": "item0.png",
+        "group": "item",
+        "x": 0,
+        "y": 0,
+        "w": 48,
+        "h": 48
+      },
+      "gold": {
+        "base": 300,
+        "purchasable": true,
+        "total": 301,
+        "sell": 210
+      },
+      "tags": [
+        "Boots"
+      ],
+      "maps": {
+        "11": true,
+        "12": true,
+        "21": true,
+        "22": false,
+        "30": false,
+        "33": false
+      },
+      "stats": {
+        "FlatMovementSpeedMod": 25
+      }
+    }
+  },
+  "groups": [
+    {
+      "id": "HuntersTalismanGroup",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "HuntersMacheteGroup",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "AHCapstone",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "APMultiplier",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "ArenaAllItemLockOutGroup",
+      "MaxGroupOwnable": "99"
+    },
+    {
+      "id": "BaseJungleItems",
+      "MaxGroupOwnable": "-1"
+    },
+    {
+      "id": "BloodstoneItems",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "Boots",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "BootsOfSpeed",
+      "MaxGroupOwnable": "-1"
+    },
+    {
+      "id": "BootsWithoutActives",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "BuildsFromStopwatchGroup",
+      "MaxGroupOwnable": "-1"
+    },
+    {
+      "id": "BurnItems",
+      "MaxGroupOwnable": "2"
+    },
+    {
+      "id": "Consumable",
+      "MaxGroupOwnable": "-1"
+    },
+    {
+      "id": "ControlWardItems",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "Default",
+      "MaxGroupOwnable": "-1"
+    },
+    {
+      "id": "DisabledOnFIRSTBLOODMode",
+      "MaxGroupOwnable": "-1"
+    },
+    {
+      "id": "DoransItems",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "Elixir",
+      "MaxGroupOwnable": "-1"
+    },
+    {
+      "id": "EnchanterCapstone",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "EternityItems",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "GangplankRUpgrade01",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "GangplankRUpgrade02",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "GangplankRUpgrade03",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "Glory",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "GoldItems",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "GuardianItems",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "ImmolateItems",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "ItemGroupSwapToSummonerDot",
+      "MaxGroupOwnable": "-1"
+    },
+    {
+      "id": "ItemGroupSwapToSummonerFlash",
+      "MaxGroupOwnable": "-1"
+    },
+    {
+      "id": "ItemGroupSwapToSummonerHaste",
+      "MaxGroupOwnable": "-1"
+    },
+    {
+      "id": "ItemGroupSwapToSummonerHeal",
+      "MaxGroupOwnable": "-1"
+    },
+    {
+      "id": "ItemGroupSwapToSummonerSmite",
+      "MaxGroupOwnable": "-1"
+    },
+    {
+      "id": "ItemGroupSwapToSummonerTeleport",
+      "MaxGroupOwnable": "-1"
+    },
+    {
+      "id": "JungleEnchantments",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "JungleItems",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "LastWhisper",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "LegendaryAnvilGroup",
+      "MaxGroupOwnable": "-1"
+    },
+    {
+      "id": "LegendaryClearingItems",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "LifelineItems",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "MagicalOpusItems_Cherry",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "MarksmanCapstone",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "MythicItems",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "NewDoransItems",
+      "MaxGroupOwnable": "-1"
+    },
+    {
+      "id": "NonItem",
+      "MaxGroupOwnable": "-1"
+    },
+    {
+      "id": "OdysseySustainItems",
+      "MaxGroupOwnable": "-1"
+    },
+    {
+      "id": "OrnnItems",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "OrnnItems_Cherry",
+      "MaxGroupOwnable": "-1"
+    },
+    {
+      "id": "PerksElixir",
+      "MaxGroupOwnable": "0"
+    },
+    {
+      "id": "PerksElixirAdvanced",
+      "MaxGroupOwnable": "0"
+    },
+    {
+      "id": "Potion",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "PrismaticItems",
+      "MaxGroupOwnable": "-1"
+    },
+    {
+      "id": "Quicksilver",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "SLIMEStarterItems",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "SRIChampItemDisabledGroup",
+      "MaxGroupOwnable": "-1"
+    },
+    {
+      "id": "SRIChampItemDisabledGroup1",
+      "MaxGroupOwnable": "-1"
+    },
+    {
+      "id": "SiegeEmergencyShieldGroup",
+      "MaxGroupOwnable": "-1"
+    },
+    {
+      "id": "SiegeFlashZoneGroup",
+      "MaxGroupOwnable": "-1"
+    },
+    {
+      "id": "SiegeLaserAffixGroup",
+      "MaxGroupOwnable": "-1"
+    },
+    {
+      "id": "SiegeMissileBarrageGroup",
+      "MaxGroupOwnable": "-1"
+    },
+    {
+      "id": "SiegePortableBarracksGroup",
+      "MaxGroupOwnable": "-1"
+    },
+    {
+      "id": "SiegeRefundGroup",
+      "MaxGroupOwnable": "-1"
+    },
+    {
+      "id": "SiegeShieldGeneratorGroup",
+      "MaxGroupOwnable": "-1"
+    },
+    {
+      "id": "SiegeSniperCannonGroup",
+      "MaxGroupOwnable": "-1"
+    },
+    {
+      "id": "SiegeTeleportPadGroup",
+      "MaxGroupOwnable": "-1"
+    },
+    {
+      "id": "SiegeTimefieldGroup",
+      "MaxGroupOwnable": "-1"
+    },
+    {
+      "id": "SightstoneActiveItems",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "SightstoneDisableGroup",
+      "MaxGroupOwnable": "0"
+    },
+    {
+      "id": "StopwatchGroup",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "StrawberryEvolveItems",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "TearItems",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "TheBlackSpear",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "TotalBiscuit",
+      "MaxGroupOwnable": "0"
+    },
+    {
+      "id": "Trinket",
+      "MaxGroupOwnable": "-1"
+    },
+    {
+      "id": "2065",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "222065",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "223001",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "223031",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "223078",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "223084",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "223124",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "223142",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "223152",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "223190",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "224633",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "224636",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "224644",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "226617",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "226620",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "226630",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "226631",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "226632",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "226653",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "226655",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "226656",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "226657",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "226662",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "226665",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "226667",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "226671",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "226675",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "226691",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "226692",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "2500",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "2501",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "2502",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "2503",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "2504",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "2505",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "2506",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "2507",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "3001",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "3002",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "3011",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "3026",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "3031",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "3032",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "3033",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "3039",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "3046",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "3050",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "3057",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "3065",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "3068",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "3071",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "3072",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "3073",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "3075",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "3078",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "3079",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "3083",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "3084",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "3085",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "3087",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "3089",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "3091",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "3094",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "3095",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "3100",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "3102",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "3107",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "3109",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "3110",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "3115",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "3116",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "3118",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "3119",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "3121",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "3122",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "3124",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "3131",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "3134",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "3136",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "3142",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "3143",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "3146",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "3151",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "3152",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "3153",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "3157",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "3161",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "3165",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "3172",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "3179",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "3181",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "3190",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "3193",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "3222",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "3300",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "3301",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "3302",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "3303",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "3430",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "3504",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "3508",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "3742",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "3814",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "4004",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "4005",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "4010",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "4011",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "4012",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "4013",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "4014",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "4016",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "4017",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "4401",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "4402",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "4403",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "4628",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "4629",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "4633",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "4637",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "4644",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "4645",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "4646",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "6333",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "6609",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "6610",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "6616",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "6617",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "6620",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "6622",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "6631",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "6653",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "6655",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "6657",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "6662",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "6664",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "6665",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "6672",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "6673",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "6675",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "6676",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "6692",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "6693",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "6695",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "6696",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "6697",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "6699",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "6701",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "8001",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "8020",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "CritMultipliers",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "InfinityCoil",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "MomentumItems",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "Quickblades",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "SpellbladeItems",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "SpellshieldItems",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "StasisAndRevive",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "ViktorHexCore",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "VoidPen",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "WardGreen",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "WardPink",
+      "MaxGroupOwnable": "1"
+    }
+  ],
+  "tree": [
+    {
+      "header": "START",
+      "tags": [
+        "LANE",
+        "JUNGLE"
+      ]
+    },
+    {
+      "header": "TOOLS",
+      "tags": [
+        "GOLDPER",
+        "CONSUMABLE",
+        "VISION"
+      ]
+    },
+    {
+      "header": "DEFENSE",
+      "tags": [
+        "HEALTH",
+        "SPELLBLOCK",
+        "ARMOR",
+        "HEALTHREGEN"
+      ]
+    },
+    {
+      "header": "ATTACK",
+      "tags": [
+        "ATTACKSPEED",
+        "CRITICALSTRIKE",
+        "DAMAGE",
+        "LIFESTEAL"
+      ]
+    },
+    {
+      "header": "MAGIC",
+      "tags": [
+        "MANA",
+        "SPELLDAMAGE",
+        "COOLDOWNREDUCTION",
+        "MANAREGEN"
+      ]
+    },
+    {
+      "header": "MOVEMENT",
+      "tags": [
+        "BOOTS",
+        "NONBOOTSMOVEMENT"
+      ]
+    },
+    {
+      "header": "UNCATEGORIZED",
+      "tags": [
+        "ACTIVE",
+        "ARMORPENETRATION",
+        "STEALTH",
+        "SLOW",
+        "ONHIT",
+        "AURA",
+        "MAGICPENETRATION",
+        "TRINKET",
+        "SPELLVAMP",
+        "TENACITY"
+      ]
+    }
+  ]
+}
