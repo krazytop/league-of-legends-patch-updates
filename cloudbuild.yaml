@@ -26,7 +26,7 @@ steps:
       - '-Dsonar.organization=${_SONAR_ORGANIZATION}'
       - '-Dsonar.host.url=${_SONAR_HOST_URL}'
       - '-Dsonar.junit.reportsPath=target/surefire-reports'
-      - '-Dsonar.jacoco.xmlReportPaths=target/jacoco-reports/jacoco.xml'
+      - '-Dsonar.coverage.jacoco.xmlReportPaths=target/jacoco-reports/jacoco.xml'
     secretEnv:
       - 'SONAR_TOKEN'
     waitFor: ['run-maven-tests']
