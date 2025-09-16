@@ -22,7 +22,7 @@ import java.util.Map;
 
 @Configuration
 public class MongoConfig {
-    
+
     private static final String BATCH_JOB_INSTANCE = "BATCH_JOB_INSTANCE";
     private static final String BATCH_JOB_EXECUTION = "BATCH_JOB_EXECUTION";
     private static final String BATCH_STEP_EXECUTION = "BATCH_STEP_EXECUTION";

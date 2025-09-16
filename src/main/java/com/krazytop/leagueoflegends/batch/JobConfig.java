@@ -26,12 +26,7 @@ public class JobConfig {
     private static final int CHUNK_SIZE = SUPPORTED_LANGUAGES.size();
 
     @Bean
-    public Step updatePatchesStep(
-            JobRepository jobRepository,
-            MongoTransactionManager mongoTransactionManager,
-            PatchItemReader patchItemReader,
-            PatchItemProcessor patchItemProcessor,
-            PatchItemWriter patchItemWriter) {
+    public Step updatePatchesStep(JobRepository jobRepository, MongoTransactionManager mongoTransactionManager, PatchItemReader patchItemReader, PatchItemProcessor patchItemProcessor, PatchItemWriter patchItemWriter) {
         return new StepBuilder("updatePatchesStep", jobRepository)
                 .<PatchMetadata, Patch>chunk(CHUNK_SIZE, mongoTransactionManager)
                 .reader(patchItemReader)
@@ -41,19 +36,17 @@ public class JobConfig {
     }
 
     @Bean
-    public TaskletStep filterPatchesVersionTaskletStep(JobRepository jobRepository,
-                                                MongoTransactionManager mongoTransactionManager,
-                                                FilterPatchesVersionTasklet filterPatchesVersionTasklet) {
+    public TaskletStep filterPatchesVersionTaskletStep(JobRepository jobRepository, MongoTransactionManager mongoTransactionManager, FilterPatchesVersionTasklet filterPatchesVersionTasklet) {
         return new StepBuilder("filterPatchesVersionTasklet", jobRepository)
                 .tasklet(filterPatchesVersionTasklet, mongoTransactionManager)
                 .build();
     }
 
     @Bean
-    public Job job(JobRepository jobRepository, PatchJobListener patchJobListener, TaskletStep filterPatchesVersionTasklet, Step updatePatchesStep) {
+    public Job job(JobRepository jobRepository, PatchJobListener patchJobListener, TaskletStep filterPatchesVersionTaskletStep, Step updatePatchesStep) {
         return new JobBuilder("checkAndUpdatePatchesJob", jobRepository)
                 .listener(patchJobListener)
-                .start(filterPatchesVersionTasklet)
+                .start(filterPatchesVersionTaskletStep)
                 .next(updatePatchesStep)
                 .build();
     }

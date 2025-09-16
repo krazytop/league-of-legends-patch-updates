@@ -1,9 +1,6 @@
 server:
   port: 8080
 spring:
-  web:
-    resources:
-      add-mappings: false
   data:
     mongodb:
       uri: ${MONGO_DATABASE_URL}LeagueOfLegends

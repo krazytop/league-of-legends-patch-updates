@@ -117,7 +117,7 @@ class PatchServiceTest {
 
     private URL getJson(String nomFichier) {
         try {
-            return new File(String.format("%s/src/test/resources/%s.json", System.getProperty("user.dir"), nomFichier)).toURI().toURL();
+            return new File(String.format("%s/src/test/resources/data/%s.json", System.getProperty("user.dir"), nomFichier)).toURI().toURL();
         } catch (MalformedURLException e) {
             return null;
         }
