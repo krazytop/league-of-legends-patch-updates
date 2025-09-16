@@ -1,5 +1,11 @@
 steps:
-  # 1. Build et exécution des tests
+  # 1. Effectue un clone complet du dépôt
+  - name: 'gcr.io/cloud-builders/git'
+    args: [ 'fetch', '--unshallow' ]
+    dir: '.'
+    id: 'git-fetch-full-history'
+
+  # 2. Build et exécution des tests
   - name: 'maven:3.9.10-eclipse-temurin-21-alpine'
     entrypoint: 'mvn'
     dir: '.'
@@ -7,9 +13,10 @@ steps:
       - 'clean'
       - 'verify'
       - '-Pcoverage'
+    waitFor: ['git-fetch-full-history']
     id: 'run-maven-tests'
 
-  # 2. Analyse SonarQube
+  # 3. Analyse SonarQube
   - name: 'maven:3.9.10-eclipse-temurin-21-alpine'
     entrypoint: 'mvn'
     dir: '.'
@@ -25,7 +32,7 @@ steps:
     waitFor: ['run-maven-tests']
     id: 'run-sonarqube-analysis'
 
-  # 3. Construction de l’image Docker
+  # 4. Construction de l’image Docker
   - name: 'gcr.io/cloud-builders/docker'
     args:
       - 'build'
@@ -37,7 +44,7 @@ steps:
     waitFor: ['run-sonarqube-analysis']
     id: 'build-docker-image'
 
-  # 4. Push de l'image Docker vers Artifact Registry
+  # 5. Push de l'image Docker vers Artifact Registry
   - name: 'gcr.io/cloud-builders/docker'
     env: [ 'DOCKER_BUILDKIT=1' ]
     args:
@@ -46,7 +53,7 @@ steps:
     waitFor: ['build-docker-image']
     id: 'push-to-artifact-registry'
 
-  # 5. Déploiement sur Cloud Run
+  # 6. Déploiement sur Cloud Run
   - name: 'gcr.io/cloud-builders/gcloud'
     args:
       - 'run'
