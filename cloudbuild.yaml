@@ -1,9 +1,12 @@
 steps:
-  # 1. Exécution des tests Maven
+  # 1. Build et exécution des tests
   - name: 'maven:3.9.10-eclipse-temurin-21-alpine'
     entrypoint: 'mvn'
-    args: ['test']
     dir: '.'
+    args:
+      - 'clean'
+      - 'verify'
+      - '-Pcoverage'
     id: 'run-maven-tests'
 
   # 2. Analyse SonarQube
@@ -15,6 +18,8 @@ steps:
       - '-Dsonar.projectKey=${_SONAR_PROJECT_KEY}'
       - '-Dsonar.organization=${_SONAR_ORGANIZATION}'
       - '-Dsonar.host.url=${_SONAR_HOST_URL}'
+      - '-Dsonar.junit.reportsPath=target/surefire-reports'
+      - '-Dsonar.jacoco.reportPaths=target/jacoco.exec'
     secretEnv:
       - 'SONAR_TOKEN'
     waitFor: ['run-maven-tests']
