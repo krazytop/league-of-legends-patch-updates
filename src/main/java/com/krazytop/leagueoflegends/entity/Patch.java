@@ -1,6 +1,8 @@
 package com.krazytop.leagueoflegends.entity;
 
 import com.krazytop.leagueoflegends.batch.model.PatchMetadata;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Transient;
@@ -12,6 +14,8 @@ import static com.krazytop.leagueoflegends.service.PatchService.getSeasonFromVer
 import static com.krazytop.leagueoflegends.service.PatchService.getWithoutFixVersion;
 
 @Data
+@Builder
+@AllArgsConstructor
 @NoArgsConstructor
 @Document(collection = "Patch")
 public class Patch {
