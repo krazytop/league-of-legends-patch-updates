@@ -1,6 +1,6 @@
-package com.krazytop.leagueoflegends.patch;
+package com.krazytop.leagueoflegends.patch.listener;
 
-import com.krazytop.leagueoflegends.batch.PatchJobListener;
+import com.krazytop.leagueoflegends.batch.listener.PatchJobListener;
 import com.krazytop.leagueoflegends.batch.model.PatchMetadata;
 import com.krazytop.leagueoflegends.entity.Metadata;
 import com.krazytop.leagueoflegends.entity.Patch;

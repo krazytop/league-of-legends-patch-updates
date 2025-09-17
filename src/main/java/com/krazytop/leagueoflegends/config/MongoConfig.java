@@ -30,26 +30,12 @@ public class MongoConfig {
     private static final String COUNT = "count";
 
     @Bean
-    public MongoTemplate mongoTemplate(
-            MongoDatabaseFactory mongoDatabaseFactory,
-            MappingMongoConverter mappingMongoConverter) {
-        return new MongoTemplate(mongoDatabaseFactory, mappingMongoConverter);
-    }
-
-    @Bean
     public MongoTransactionManager transactionManager(MongoDatabaseFactory mongoDatabaseFactory) {
         return new MongoTransactionManager(mongoDatabaseFactory);
     }
 
     @Bean
-    public MongoMappingContext mongoMappingContext() {
-        return new MongoMappingContext();
-    }
-
-    @Bean
-    public MappingMongoConverter mappingMongoConverter(
-            MongoDatabaseFactory mongoDatabaseFactory,
-            MongoMappingContext mongoMappingContext) {
+    public MappingMongoConverter mappingMongoConverter(MongoDatabaseFactory mongoDatabaseFactory, MongoMappingContext mongoMappingContext) {
         DbRefResolver dbRefResolver = new DefaultDbRefResolver(mongoDatabaseFactory);
         MappingMongoConverter converter = new MappingMongoConverter(dbRefResolver, mongoMappingContext);
         converter.setMapKeyDotReplacement(".");
@@ -68,7 +54,7 @@ public class MongoConfig {
 
     @Bean
     public JobExplorer jobExplorer(MongoTemplate mongoTemplate, MongoTransactionManager transactionManager) throws Exception {
-        var mongoExplorerFactoryBean = new MongoJobExplorerFactoryBean();
+        MongoJobExplorerFactoryBean mongoExplorerFactoryBean = new MongoJobExplorerFactoryBean();
         mongoExplorerFactoryBean.setMongoOperations(mongoTemplate);
         mongoExplorerFactoryBean.setTransactionManager(transactionManager);
         mongoExplorerFactoryBean.afterPropertiesSet();

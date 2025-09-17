@@ -1,12 +1,12 @@
 package com.krazytop.leagueoflegends.batch;
 
+import com.krazytop.leagueoflegends.batch.listener.PatchJobListener;
 import com.krazytop.leagueoflegends.batch.model.PatchMetadata;
 import com.krazytop.leagueoflegends.batch.step.FilterPatchesVersionTasklet;
 import com.krazytop.leagueoflegends.batch.step.PatchItemProcessor;
 import com.krazytop.leagueoflegends.batch.step.PatchItemReader;
 import com.krazytop.leagueoflegends.batch.step.PatchItemWriter;
 import com.krazytop.leagueoflegends.entity.Patch;
-import lombok.AllArgsConstructor;
 import org.springframework.batch.core.Job;
 import org.springframework.batch.core.Step;
 import org.springframework.batch.core.job.builder.JobBuilder;
@@ -19,7 +19,6 @@ import org.springframework.data.mongodb.MongoTransactionManager;
 
 import static com.krazytop.leagueoflegends.service.PatchService.SUPPORTED_LANGUAGES;
 
-@AllArgsConstructor
 @Configuration
 public class JobConfig {
 
