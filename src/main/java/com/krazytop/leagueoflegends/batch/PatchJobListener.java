@@ -37,9 +37,9 @@ public class PatchJobListener implements JobExecutionListener {
         if (jobExecution.getStatus().equals(BatchStatus.COMPLETED) && !Objects.requireNonNull(newPatchesMetadata).isEmpty()) {
             Metadata metadata = metadataRepository.findAll().getFirst();
             try {
-                String currentPatch = patchService.getCurrentPatchVersion();
-                metadata.setCurrentPatch(currentPatch);
-                metadata.setCurrentSeason(getSeasonFromVersion(currentPatch));
+                String currentPatchVersion = patchService.getCurrentPatchVersion();
+                metadata.setCurrentPatch(currentPatchVersion);
+                metadata.setCurrentSeason(getSeasonFromVersion(currentPatchVersion));
                 log.info("Metadata updated with current patch {} and season {}", metadata.getCurrentPatch(), metadata.getCurrentSeason());
             } catch (IOException | URISyntaxException e) {
                 log.warn("'Current versions on live' API is unavailable");
