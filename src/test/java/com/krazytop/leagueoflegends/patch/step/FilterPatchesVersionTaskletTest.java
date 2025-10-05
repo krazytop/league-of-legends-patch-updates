@@ -36,7 +36,7 @@ class FilterPatchesVersionTaskletTest {
     private MetadataRepository metadataRepository;
 
     @Test
-    void shouldStoreNewPatchesMetadataInExecutionContext() throws Exception {
+    void execute() throws Exception {
         Set<String> allVersions = Set.of("14.1.1", "14.2.1", "14.3.1");
         Set<String> existingVersions = Set.of("14.1");
 
@@ -44,7 +44,7 @@ class FilterPatchesVersionTaskletTest {
         metadata.setAllPatches(existingVersions);
 
         when(patchService.getAllVersions()).thenReturn(allVersions);
-        when(metadataRepository.findAll()).thenReturn(List.of(metadata));
+        when(metadataRepository.findMetadata()).thenReturn(Optional.of(metadata));
 
         StepContribution contribution = mock(StepContribution.class);
         ChunkContext chunkContext = mock(ChunkContext.class);
@@ -65,12 +65,13 @@ class FilterPatchesVersionTaskletTest {
 
         List<PatchMetadata> results = (List<PatchMetadata>) executionContext.get("newPatchesMetadata");
 
-        int expectedCount = (2) * SUPPORTED_LANGUAGES.size();
+        int expectedCount = 2 * SUPPORTED_LANGUAGES.size();
         assertThat(results).hasSize(expectedCount);
         List<PatchMetadata> expectedPatchesMetadata = Stream.of("14.2.1", "14.3.1")
                 .flatMap(version -> SUPPORTED_LANGUAGES.stream()
                         .map(lang -> new PatchMetadata(version, lang)))
                 .toList();
         assertThat(results).containsExactlyInAnyOrderElementsOf(expectedPatchesMetadata);
+        verify(metadataRepository).findMetadata();
     }
 }

@@ -13,6 +13,7 @@ import org.springframework.batch.item.Chunk;
 
 import java.util.HashSet;
 import java.util.List;
+import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.*;
@@ -35,16 +36,16 @@ class PatchItemWriterTest {
 
         Metadata metadata = Metadata.builder().allPatches(new HashSet<>()).build();
 
-        when(metadataRepository.findAll()).thenReturn(List.of(metadata));
+        when(metadataRepository.findMetadata()).thenReturn(Optional.of(metadata));
 
         Chunk<Patch> chunk = new Chunk<>(List.of(patch1, patch2));
 
         writer.write(chunk);
 
         verify(patchRepository).saveAll(chunk);
-        verify(metadataRepository).findAll();
+        verify(metadataRepository).findMetadata();
 
-        assertThat(metadata.getAllPatches()).containsExactlyInAnyOrder("14.1", "14.2");
+        assertThat(metadata.getAllPatches()).containsExactlyInAnyOrder("14.2", "14.1");
         verify(metadataRepository).save(metadata);
     }
 

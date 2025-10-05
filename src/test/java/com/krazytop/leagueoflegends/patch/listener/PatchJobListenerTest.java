@@ -9,6 +9,7 @@ import com.krazytop.leagueoflegends.repository.PatchRepository;
 import com.krazytop.leagueoflegends.service.PatchService;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.ArgumentCaptor;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
@@ -40,48 +41,48 @@ class PatchJobListenerTest {
     @Mock
     private ExecutionContext executionContext;
     @Mock
-    private List<PatchMetadata> newPatchMetadata;
+    private PatchMetadata newPatchMetadata;
 
     @Test
-    void testAfterJob_withCompletedStatus_andNewPatchesMetadata_shouldUpdateMetadata_fromService() throws IOException, URISyntaxException {
-        Metadata metadata = new Metadata();
-
+    void afterJob_NewPatches() throws IOException, URISyntaxException {
         when(jobExecution.getExecutionContext()).thenReturn(executionContext);
-        when(executionContext.get("newPatchesMetadata")).thenReturn(newPatchMetadata);
+        when(executionContext.get("newPatchesMetadata")).thenReturn(List.of(newPatchMetadata));
         when(jobExecution.getStatus()).thenReturn(BatchStatus.COMPLETED);
-        when(metadataRepository.findAll()).thenReturn(List.of(metadata));
         when(patchService.getCurrentPatchVersion()).thenReturn("15.1");
 
         patchJobListener.afterJob(jobExecution);
 
-        assertThat(metadata.getCurrentPatch()).isEqualTo("15.1");
-        assertThat(metadata.getCurrentSeason()).isEqualTo(15);
-        verify(metadataRepository).save(metadata);
+        ArgumentCaptor<Metadata> captor = ArgumentCaptor.forClass(Metadata.class);
+        verify(metadataRepository).save(captor.capture());
+
+        Metadata savedMetadata = captor.getValue();
+        assertThat(savedMetadata.getCurrentPatch()).isEqualTo("15.1");
+        assertThat(savedMetadata.getCurrentSeason()).isEqualTo(15);
     }
 
     @Test
     void afterJob_Exception() throws IOException, URISyntaxException {
-        Metadata metadata = new Metadata();
         Patch latestPatch = Patch.builder().patchId("15.1").season(15).build();
 
         when(jobExecution.getExecutionContext()).thenReturn(executionContext);
-        when(executionContext.get("newPatchesMetadata")).thenReturn(newPatchMetadata);
+        when(executionContext.get("newPatchesMetadata")).thenReturn(List.of(newPatchMetadata));
         when(jobExecution.getStatus()).thenReturn(BatchStatus.COMPLETED);
-        when(metadataRepository.findAll()).thenReturn(List.of(metadata));
         when(patchService.getCurrentPatchVersion()).thenThrow(new IOException());
         when(patchRepository.findLatestPatch()).thenReturn(latestPatch);
 
         patchJobListener.afterJob(jobExecution);
 
-        assertThat(metadata.getCurrentPatch()).isEqualTo("15.1");
-        assertThat(metadata.getCurrentSeason()).isEqualTo(15);
-        verify(metadataRepository).save(metadata);
+        ArgumentCaptor<Metadata> captor = ArgumentCaptor.forClass(Metadata.class);
+        verify(metadataRepository).save(captor.capture());
+
+        Metadata savedMetadata = captor.getValue();
+        assertThat(savedMetadata.getCurrentPatch()).isEqualTo("15.1");
+        assertThat(savedMetadata.getCurrentSeason()).isEqualTo(15);
     }
 
     @Test
     void afterJob_NotCompleted() {
         when(jobExecution.getExecutionContext()).thenReturn(executionContext);
-        when(executionContext.get("newPatchesMetadata")).thenReturn(newPatchMetadata);
         when(jobExecution.getStatus()).thenReturn(BatchStatus.FAILED);
 
         patchJobListener.afterJob(jobExecution);
