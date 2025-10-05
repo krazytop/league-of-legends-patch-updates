@@ -99,7 +99,7 @@ public class PatchService {
         return Integer.valueOf(version.substring(0, version.indexOf('.')));
     }
 
-    public boolean isVersionAfterAnOther(String versionToCheck, String compareToVersion) {
+    public static boolean isVersionAfterAnOther(String versionToCheck, String compareToVersion) {
         String[] v1 = versionToCheck.split("\\.");
         String[] v2 = compareToVersion.split("\\.");
 

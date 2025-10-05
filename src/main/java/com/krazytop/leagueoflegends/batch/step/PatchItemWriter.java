@@ -21,8 +21,9 @@ public class PatchItemWriter implements ItemWriter<Patch> {
     @Override
     public void write(Chunk<? extends Patch> newPatches) {
         patchRepository.saveAll(newPatches);
-        Metadata metadata = metadataRepository.findAll().getFirst();
+        Metadata metadata = metadataRepository.findMetadata().orElse(new Metadata());
         metadata.getAllPatches().addAll(newPatches.getItems().stream().map(Patch::getPatchId).collect(Collectors.toSet()));
+        metadata.sortPatches();
         metadataRepository.save(metadata);
     }
 

@@ -1,6 +1,7 @@
 package com.krazytop.leagueoflegends.batch.step;
 
 import com.krazytop.leagueoflegends.batch.model.PatchMetadata;
+import com.krazytop.leagueoflegends.entity.Metadata;
 import com.krazytop.leagueoflegends.repository.MetadataRepository;
 import com.krazytop.leagueoflegends.service.PatchService;
 import lombok.AllArgsConstructor;
@@ -26,7 +27,7 @@ public class FilterPatchesVersionTasklet implements Tasklet {
     @Override
     public RepeatStatus execute(StepContribution contribution, ChunkContext chunkContext) throws Exception {
         Set<String> allPatchesVersion = patchService.getAllVersions();
-        Set<String> savedPatchesVersion = metadataRepository.findAll().getFirst().getAllPatches();
+        Set<String> savedPatchesVersion = metadataRepository.findMetadata().orElse(new Metadata()).getAllPatches();
 
         List<PatchMetadata> newPatchesMetadata = allPatchesVersion.stream()
                 .filter(version -> !savedPatchesVersion.contains(getWithoutFixVersion(version)))
