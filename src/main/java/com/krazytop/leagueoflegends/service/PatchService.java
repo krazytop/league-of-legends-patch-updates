@@ -74,7 +74,7 @@ public class PatchService {
         }
     }
 
-    public void addPatchQueues(Patch patch) throws IOException, URISyntaxException {
+    private void addPatchQueues(Patch patch) throws IOException, URISyntaxException {
         String version = isVersionAfterAnOther(patch.getPatchId(), "13.13") ? patch.getPatchId() : "13.14";
         String queueUri = String.format("https://raw.communitydragon.org/%s/plugins/rcp-be-lol-game-data/global/%s/v1/queues.json", version, patch.getLanguage().toLowerCase());
         if (isVersionAfterAnOther(version, "14.12")) {

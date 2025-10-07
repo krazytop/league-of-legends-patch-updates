@@ -87,7 +87,7 @@ class PatchServiceTest {
     @ParameterizedTest
     @MethodSource("isVersionAfterAnOtherProvider")
     void isVersionAfterAnOther(String versionToCheck, String compareToVersion, boolean expected) {
-        assertThat(patchService.isVersionAfterAnOther(versionToCheck, compareToVersion)).isEqualTo(expected);
+        assertThat(PatchService.isVersionAfterAnOther(versionToCheck, compareToVersion)).isEqualTo(expected);
     }
 
     private static Stream<Arguments> isVersionAfterAnOtherProvider() {
@@ -115,12 +115,8 @@ class PatchServiceTest {
         }
     }
 
-    private URL getJson(String nomFichier) {
-        try {
-            return new File(String.format("%s/src/test/resources/data/%s.json", System.getProperty("user.dir"), nomFichier)).toURI().toURL();
-        } catch (MalformedURLException e) {
-            return null;
-        }
+    private URL getJson(String nomFichier) throws MalformedURLException {
+        return new File(String.format("%s/src/test/resources/data/%s.json", System.getProperty("user.dir"), nomFichier)).toURI().toURL();
     }
 
     private ChampionNomenclature getExpectedChampionNomenclature() {
