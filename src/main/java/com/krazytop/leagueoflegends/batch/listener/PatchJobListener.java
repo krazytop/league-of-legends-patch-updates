@@ -2,13 +2,10 @@ package com.krazytop.leagueoflegends.batch.listener;
 
 import com.krazytop.leagueoflegends.batch.model.PatchMetadata;
 import com.krazytop.leagueoflegends.entity.Metadata;
-import com.krazytop.leagueoflegends.entity.Patch;
 import com.krazytop.leagueoflegends.repository.MetadataRepository;
-import com.krazytop.leagueoflegends.repository.PatchRepository;
 import com.krazytop.leagueoflegends.service.PatchService;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.batch.core.BatchStatus;
 import org.springframework.batch.core.JobExecution;
 import org.springframework.batch.core.JobExecutionListener;
 import org.springframework.batch.item.ExecutionContext;
