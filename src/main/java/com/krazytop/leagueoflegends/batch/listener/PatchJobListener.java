@@ -27,28 +27,23 @@ import static com.krazytop.leagueoflegends.service.PatchService.getSeasonFromVer
 public class PatchJobListener implements JobExecutionListener {
 
     private final MetadataRepository metadataRepository;
-    private final PatchRepository patchRepository;
     private final PatchService patchService;
 
     @Override
     public void afterJob(JobExecution jobExecution) {
         ExecutionContext jobContext = jobExecution.getExecutionContext();
         List<PatchMetadata> newPatchesMetadata = (List<PatchMetadata>) jobContext.get("newPatchesMetadata");
-        if (jobExecution.getStatus().equals(BatchStatus.COMPLETED) && !Objects.requireNonNull(newPatchesMetadata).isEmpty()) {
+        if (!Objects.requireNonNull(newPatchesMetadata).isEmpty()) {
             Metadata metadata = metadataRepository.findMetadata().orElse(new Metadata());
             try {
                 String currentPatchVersion = patchService.getCurrentPatchVersion();
                 metadata.setCurrentPatch(currentPatchVersion);
                 metadata.setCurrentSeason(getSeasonFromVersion(currentPatchVersion));
-            } catch (IOException | URISyntaxException e) {
-                log.warn("'Current versions on live' API is unavailable");
-                Patch latestPatch = patchRepository.findLatestPatch();
-                metadata.setCurrentPatch(latestPatch.getPatchId());
-                metadata.setCurrentSeason(latestPatch.getSeason());
-            } finally {
+                metadataRepository.save(metadata);
                 log.info("Metadata updated with current patch {} and season {}", metadata.getCurrentPatch(), metadata.getCurrentSeason());
+            } catch (IOException | URISyntaxException e) {
+                log.error("'Current versions on live' API is unavailable");
             }
-            metadataRepository.save(metadata);
         }
     }
 }
