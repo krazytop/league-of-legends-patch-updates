@@ -179,7 +179,7 @@ class PatchServiceTest {
                 .name("Autodestruction")
                 .image("assets/ux/cherry/augments/icons/selfdestruct_large.png")
                 .description("Vous commencez chaque manche avec une bombe attachée à vous. Au bout de @BombDelay@ sec, elle explose en infligeant des <trueDamage>dégâts bruts équivalents à @MaxHealthDamage*100@% des PV max</trueDamage> et <status>projette dans les airs</status> pendant @KnockupDuration@ sec.<br>")
-                .dataValues(Map.of("BombDelay", 15F, "KnockupDuration", 0.75F, "MaxHealthDamage", 0.20000000298023224F, "Radius", 350F))
+                .dataValues(Map.of("BombDelay", List.of(15F), "KnockupDuration", List.of(0.75F), "MaxHealthDamage", List.of(0.20000000298023224F), "Radius", List.of(350F)))
                 .build();
     }
 
